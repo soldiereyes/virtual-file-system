@@ -3,6 +3,8 @@ import './DirectoryList.css';
 import {StringUtils} from "../Utils/StringUtils";
 import CircularButton from "./CircularButton/CircularButton";
 import CreateDirectory from "./CreateDirectory/CreateDirectory";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 
 class DirectoryList extends Component {
@@ -84,7 +86,7 @@ class DirectoryList extends Component {
 
         return (
             <div className="App">
-                <h1>Lista de Diretórios</h1>
+                <h1>Repositórios</h1>
                 <div className="directory-list">
                     {directories.map((directory) => (
                         <div key={directory.id} className="directory-card">
@@ -103,8 +105,14 @@ class DirectoryList extends Component {
                                 </div>
                             ) : (
                                 <div>
-                                    <button className="edit-button" onClick={() => this.handleEditFile(directory.id, directory.name)}>Editar</button>
-                                    <button className="delete-button" onClick={() => this.handleDeleteFile(directory.id)}>Excluir</button>
+                                    <button className="edit-button"
+                                            onClick={() => this.handleEditFile(directory.id, directory.name)}>
+                                        <FontAwesomeIcon icon={faEdit}/> Editar
+                                    </button>
+                                    <button className="delete-button"
+                                            onClick={() => this.handleDeleteFile(directory.id)}>
+                                        <FontAwesomeIcon icon={faTrashAlt}/> Excluir
+                                    </button>
                                 </div>
                             )}
                         </div>
@@ -112,12 +120,12 @@ class DirectoryList extends Component {
                 </div>
                 {isCreateDialogOpen && (
                     <CreateDirectory
-                        onClose={() => this.setState({ isCreateDialogOpen: false })}
+                        onClose={() => this.setState({isCreateDialogOpen: false})}
                         onCreate={this.handleCreateDirectory}
                     />
                 )}
 
-                <CircularButton onClick={() => this.setState({ isCreateDialogOpen: true })} />
+                <CircularButton onClick={() => this.setState({isCreateDialogOpen: true })} />
             </div>
         );
     }
