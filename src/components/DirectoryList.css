@@ -3,20 +3,17 @@
     margin: 0 auto;
 }
 
-/* Título */
 h1 {
     text-align: center;
     margin-bottom: 20px;
 }
 
-/* Lista de diretórios como grid flexível */
 .directory-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 20px;
 }
-
 
 .directory-card {
     background-color: white;
@@ -58,10 +55,26 @@ h1 {
     transform: scale(1.05);
 }
 
-
 .directory-card:hover {
     transform: translateY(-5px);
 }
+
+.directory-card input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.directory-card input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
 
 @media (max-width: 1024px) {
     .directory-card {

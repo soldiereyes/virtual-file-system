@@ -93,6 +93,7 @@ class DirectoryList extends Component {
                             {editFileId === directory.id ? (
                                 <div>
                                     <input
+                                        className="edit-input"
                                         type="text"
                                         value={editFileName}
                                         onChange={(e) => this.setState({ editFileName: e.target.value })}
