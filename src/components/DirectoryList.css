@@ -6,6 +6,11 @@
 h1 {
     text-align: center;
     margin-bottom: 20px;
+    color: #3e3e3e;
+}
+
+h2 {
+    color: #3e3e3e;
 }
 
 .directory-list {

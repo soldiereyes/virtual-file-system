@@ -1,5 +1,5 @@
 import './App.css';
-import {DirectoryList} from './components/DirectoryList';
+import DirectoryList from './components/DirectoryList';
 
 function App() {
   return (
