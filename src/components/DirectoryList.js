@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import './DirectoryList.css';
 import {StringUtils} from "../Utils/StringUtils";
+import CircularButton from "./CircularButton/CircularButton";
+import CreateDirectory from "./CreateDirectory/CreateDirectory";
 
 
 class DirectoryList extends Component {
@@ -9,7 +11,8 @@ class DirectoryList extends Component {
         this.state = {
             directories: [],
             editFileId: null,
-            editFileName: StringUtils.STRING_EMPTY
+            editFileName: StringUtils.STRING_EMPTY,
+            isCreateDialogOpen: false,
         };
     }
 
@@ -27,6 +30,12 @@ class DirectoryList extends Component {
                 console.error("Erro ao buscar diretórios:", error);
             });
     }
+
+    handleCreateDirectory = (newDirectory) => {
+        this.setState((prevState) => ({
+            directories: [...prevState.directories, newDirectory],
+        }));
+    };
 
     handleDeleteFile = (fileId) => {
         fetch(`http://localhost:8080/api/directories/${fileId}`, {
@@ -59,7 +68,7 @@ class DirectoryList extends Component {
         })
             .then(() => {
                 this.setState({ editFileId: null, editFileName: "" });
-                this.fetchDirectories(); // Atualiza a lista de diretórios após a edição
+                this.fetchDirectories();
             })
             .catch((error) => {
                 console.error("Erro ao editar arquivo:", error);
@@ -71,7 +80,7 @@ class DirectoryList extends Component {
     };
 
     render() {
-        const { directories, editFileId, editFileName } = this.state;
+        const { directories, editFileId, editFileName, isCreateDialogOpen } = this.state;
 
         return (
             <div className="App">
@@ -81,7 +90,6 @@ class DirectoryList extends Component {
                         <div key={directory.id} className="directory-card">
                             <h2>{directory.name}</h2>
 
-                            {/* Se estiver editando, mostrar o formulário de edição */}
                             {editFileId === directory.id ? (
                                 <div>
                                     <input
@@ -94,7 +102,6 @@ class DirectoryList extends Component {
                                 </div>
                             ) : (
                                 <>
-                                    {/* Botões de Editar e Excluir */}
                                     <button onClick={() => this.handleEditFile(directory.id, directory.name)}>Editar</button>
                                     <button onClick={() => this.handleDeleteFile(directory.id)}>Excluir</button>
                                 </>
@@ -102,6 +109,14 @@ class DirectoryList extends Component {
                         </div>
                     ))}
                 </div>
+                {isCreateDialogOpen && (
+                    <CreateDirectory
+                        onClose={() => this.setState({ isCreateDialogOpen: false })}
+                        onCreate={this.handleCreateDirectory}
+                    />
+                )}
+
+                <CircularButton onClick={() => this.setState({ isCreateDialogOpen: true })} />
             </div>
         );
     }
