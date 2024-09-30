@@ -25,20 +25,23 @@ const CreateDirectory = ({ onClose, onCreate }) => {
     };
 
     return (
-        <div className="create-directory-modal">
-            <h2>Criar Diretório</h2>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    placeholder="Nome do Diretório"
-                    value={directoryName}
-                    onChange={(e) => setDirectoryName(e.target.value)}
-                    required
-                />
-                <button type="submit">Criar</button>
-                <button type="button" onClick={onClose}>Cancelar</button>
-            </form>
-        </div>
+        <>
+            <div className="modal-backdrop" onClick={onClose}></div>
+            <div className="create-directory-modal">
+                <h2>Criar Diretório</h2>
+                <form onSubmit={handleSubmit}>
+                    <input
+                        type="text"
+                        placeholder="Nome do Diretório"
+                        value={directoryName}
+                        onChange={(e) => setDirectoryName(e.target.value)}
+                        required
+                    />
+                    <button type="submit">Criar</button>
+                    <button type="button" onClick={onClose}>Cancelar</button>
+                </form>
+            </div>
+        </>
     );
 };
 
