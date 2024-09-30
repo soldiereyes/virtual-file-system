@@ -101,10 +101,10 @@ class DirectoryList extends Component {
                                     <button onClick={this.handleCancelEdit}>Cancelar</button>
                                 </div>
                             ) : (
-                                <>
-                                    <button onClick={() => this.handleEditFile(directory.id, directory.name)}>Editar</button>
-                                    <button onClick={() => this.handleDeleteFile(directory.id)}>Excluir</button>
-                                </>
+                                <div>
+                                    <button className="edit-button" onClick={() => this.handleEditFile(directory.id, directory.name)}>Editar</button>
+                                    <button className="delete-button" onClick={() => this.handleDeleteFile(directory.id)}>Excluir</button>
+                                </div>
                             )}
                         </div>
                     ))}
