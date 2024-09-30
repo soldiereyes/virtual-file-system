@@ -29,7 +29,7 @@ class DirectoryList extends Component {
     }
 
     handleDeleteFile = (fileId) => {
-        fetch(`http://localhost:8080/api/files/${fileId}`, {
+        fetch(`http://localhost:8080/api/directories/${fileId}`, {
             method: 'DELETE'
         })
             .then(() => {
@@ -50,7 +50,7 @@ class DirectoryList extends Component {
     handleSaveEdit = () => {
         const { editFileId, editFileName } = this.state;
 
-        fetch(`http://localhost:8080/api/files/${editFileId}`, {
+        fetch(`http://localhost:8080/api/directories/${editFileId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -67,7 +67,7 @@ class DirectoryList extends Component {
     };
 
     handleCancelEdit = () => {
-        this.setState({ editFileId: null, editFileName: "" });
+        this.setState({ editFileId: null, editFileName: StringUtils.STRING_EMPTY });
     };
 
     render() {
@@ -80,7 +80,6 @@ class DirectoryList extends Component {
                     {directories.map((directory) => (
                         <div key={directory.id} className="directory-card">
                             <h2>{directory.name}</h2>
-                            <p>ID: {directory.id}</p>
 
                             {/* Se estiver editando, mostrar o formulário de edição */}
                             {editFileId === directory.id ? (
