@@ -30,13 +30,13 @@ h1 {
   gap: 20px;
 }
 
-/* Estilização dos cards de diretórios */
+
 .directory-card {
   background-color: white;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 20px;
-  width: calc(25% - 20px); /* 4 cards por linha */
+  width: calc(25% - 20px);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   text-align: center;
   transition: transform 0.2s ease;
@@ -46,21 +46,19 @@ h1 {
   transform: translateY(-5px);
 }
 
-/* Responsividade */
 @media (max-width: 1024px) {
   .directory-card {
-    width: calc(33.33% - 20px); /* 3 cards por linha em telas menores */
+    width: calc(33.33% - 20px);
   }
 }
 
 @media (max-width: 768px) {
-  .directory-card {
-    width: calc(50% - 20px); /* 2 cards por linha em telas menores */
+  .directory-card {/* 2 cards por linha em telas menores */
   }
 }
 
 @media (max-width: 480px) {
   .directory-card {
-    width: 100%; /* 1 card por linha em telas pequenas */
+    width: 100%;
   }
 }
