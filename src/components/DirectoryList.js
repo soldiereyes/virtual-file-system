@@ -1,32 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import api from '../services/api';
 
-const DirectoryList = () => {
+export const DirectoryList = () => {
     const [directories, setDirectories] = useState([]);
 
     useEffect(() => {
-        const fetchDirectories = async () => {
-            try {
-                const response = await api.get('/directories');
-                setDirectories(response.data);
-            } catch (error) {
-                console.error('Erro ao buscar diretórios:', error);
-            }
-        };
-
-        fetchDirectories();
+        fetch("http://localhost:8080/api/directories")
+            .then((response) => response.json())
+            .then((data) => {
+                setDirectories(data);
+            })
+            .catch((error) => {
+                console.error("Erro ao buscar diretórios:", error);
+            });
     }, []);
 
     return (
-        <div>
-            <h1>Diretórios</h1>
-            <ul>
+        <div className="App">
+            <h1>Lista de Diretórios</h1>
+            <div className="directory-list">
                 {directories.map((directory) => (
-                    <li key={directory.id}>{directory.name}</li>
+                    <div key={directory.id} className="directory-card">
+                        <h2>{directory.name}</h2>
+                        <p>ID: {directory.id}</p>
+                    </div>
                 ))}
-            </ul>
+            </div>
         </div>
     );
-};
-
-export default DirectoryList;
+}
