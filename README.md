@@ -42,3 +42,13 @@ Altere o baseURL se necessário, de acordo com a URL do seu backend.
 Após configurar a URL da API e instalar as dependências, inicie o servidor de desenvolvimento:
 **npm start** ou **yarn start**
 
+### 5. Imagens
+
+![image](https://github.com/user-attachments/assets/418639db-3313-47ea-ab20-a5d9fdb040d3)
+
+![image](https://github.com/user-attachments/assets/96f887cd-4a10-4efb-9867-a034c3d43f0d)
+
+![image](https://github.com/user-attachments/assets/deeeb1c4-16c9-49a1-b0bc-272c96d69cb0)
+
+
+
